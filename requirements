@@ -1,0 +1,4 @@
+# No external dependencies required.
+# This project runs on the standard Python 3.x library.
+# Modules used: random, time
+
