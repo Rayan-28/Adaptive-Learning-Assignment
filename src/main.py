@@ -11,7 +11,7 @@ def main():
     tracker = PerformanceTracker()
     engine = AdaptiveEngine()
     
-    current_difficulty = "Easy"
+    current_difficulty = "Easy" #tracks the current difficulty level and is kept updating
     
     while True:
         puzzle = generator.generate(current_difficulty) #generates puzzle
@@ -46,9 +46,21 @@ def main():
             print(f"*** Adapting Difficulty: {current_difficulty} -> {new_difficulty} ***\n")
             current_difficulty = new_difficulty
 
-    print("\n--- Session Summary ---")
+   
+    print("SESSION SUMMARY")
+    print("-"*30)
+    
     stats = tracker.get_summary()
-    print(stats)
+    
+    if isinstance(stats, dict):
+        print(f"Total Questions:       {stats['total_questions']}")
+        print(f"Accuracy:              {stats['accuracy']}%")
+        print(f"Average Speed:         {stats['average_time_sec']}s")
+        print("-" * 30)
+        # This satisfies the requirement to show "Next Recommended Level"
+        print(f"Next Recommended Level: {current_difficulty}")
+    else:
+        print(stats) # Handles the "No questions answered" case
 
 if __name__ == "__main__":
     main()
