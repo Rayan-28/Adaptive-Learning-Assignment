@@ -7,6 +7,7 @@ class AdaptiveEngine:
         if len(recent_history) < 2:
             return current_level
 
+
         #logic for leveling downwhen we determine the user is struggling if 2 ques wrong then level down
         last_two = recent_history[-2:]
         correct_count_last_2 = sum(1 for r in last_two if r['correct'])
